@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Level 2 - Vigenère Cipher Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+    <section class="card">
+        <span class="badge">Level 2 / Vigenère Cipher</span>
+        <h1>Vigenère Cipher Quiz</h1>
+        <p>Solve this quiz to reveal the clue for this level.</p>
+
+        <div class="question">What is the main device that processes data in a computer?</div>
+
+        <input id="answer" type="text" placeholder="Type your answer here">
+        <button onclick="checkAnswer()">Submit Answer</button>
+
+        <div id="result" class="result">Awaiting input...</div>
+
+        <a class="button" href="index.html">Back to Mission Control</a>
+    </section>
+</main>
+
+<script>
+    const correctAnswers = ['CPU','CENTRAL PROCESSING UNIT'];
+
+    function normalize(value) {
+        return value.trim().toUpperCase();
+    }
+
+    function checkAnswer() {
+        const userAnswer = normalize(document.getElementById("answer").value);
+        const result = document.getElementById("result");
+
+        if (correctAnswers.includes(userAnswer)) {
+            result.innerHTML = `<div class="success"><b>ACCESS GRANTED</b><br>Correct. The Vigenère key is: <code>CPU</code></div>`;
+        } else {
+            result.innerHTML = `<div class="error"><b>ACCESS DENIED</b><br>Wrong answer. Try again.</div>`;
+        }
+    }
+
+    document.getElementById("answer").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    });
+</script>
+</body>
+</html>
