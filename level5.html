@@ -11,9 +11,15 @@
     <section class="card">
         <span class="badge">Level 5 / RSA Encryption</span>
         <h1>RSA Final Challenge</h1>
-        <p>Solve this quiz to reveal the clue for this level.</p>
 
-        <div class="question">What word did Level 4 reveal as the password for Level 5?</div>
+        <p>
+            In Level 4, you decrypted the AES file and discovered the password for the final level.
+            Enter that password below.
+        </p>
+
+        <div class="question">
+            What password was revealed after decrypting the AES file in Level 4?
+        </div>
 
         <input id="answer" type="text" placeholder="Type your answer here">
         <button onclick="checkAnswer()">Submit Answer</button>
@@ -25,7 +31,7 @@
 </main>
 
 <script>
-    const correctAnswers = ['GALAXY'];
+    const correctAnswers = ["GALAXY"];
 
     function normalize(value) {
         return value.trim().toUpperCase();
@@ -36,9 +42,20 @@
         const result = document.getElementById("result");
 
         if (correctAnswers.includes(userAnswer)) {
-            result.innerHTML = `<div class="success"><b>ACCESS GRANTED</b><br>Correct. Final instruction: use <code>private.pem</code> to decrypt <code>encrypted.bin</code> and reveal the final message.</div>`;
+            result.innerHTML =
+                `<div class="success">
+                    <b>ACCESS GRANTED</b><br>
+                    Correct. The Level 5 password is: <code>GALAXY</code><br><br>
+                    Final instruction:<br>
+                    Use <code>private.pem</code> to decrypt <code>encrypted.bin</code> with RSA.<br>
+                    This will reveal the final escape message.
+                </div>`;
         } else {
-            result.innerHTML = `<div class="error"><b>ACCESS DENIED</b><br>Wrong answer. Try again.</div>`;
+            result.innerHTML =
+                `<div class="error">
+                    <b>ACCESS DENIED</b><br>
+                    Wrong answer. Try again.
+                </div>`;
         }
     }
 
