@@ -147,10 +147,17 @@
                 `<div class="success">
                     <b>ACCESS GRANTED</b><br>
                     Correct. Level 5 password: <code>GALAXY</code><br><br>
+
                     Final instruction:<br>
-                    Use <code>private.pem</code> to decrypt <code>encrypted.bin</code> with RSA.<br>
-                    This reveals the final escape message:<br>
-                    <code>CONGRATULATIONS! YOU ESCAPED THE CRYPTO LAB.</code>
+                    You have reached the final RSA level.<br><br>
+
+                    Use the RSA private key <code>private.pem</code> to decrypt the file
+                    <code>encrypted.bin</code>.<br><br>
+
+                    Run this command in the terminal:<br>
+                    <code>openssl pkeyutl -decrypt -inkey private.pem -in encrypted.bin -out decrypted_final.txt</code><br><br>
+
+                    Then open <code>decrypted_final.txt</code> to reveal the final escape message.
                 </div>`;
         } else {
             result.innerHTML =
