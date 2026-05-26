@@ -3,19 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level 2 - Vigenère Cipher Quiz</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Level 2 - Vigenere Cipher</title>
+
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #020617, #0f172a);
+            color: #e5e7eb;
+            font-family: Consolas, "Courier New", monospace;
+        }
+
+        main {
+            width: min(900px, 92%);
+            margin: 0 auto;
+            padding: 50px 0;
+        }
+
+        .card {
+            background: #111827;
+            border: 1px solid #1f2937;
+            border-radius: 18px;
+            padding: 32px;
+        }
+
+        .badge {
+            display: inline-block;
+            border: 1px solid #22c55e;
+            color: #22c55e;
+            padding: 6px 12px;
+            border-radius: 999px;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            color: #f9fafb;
+        }
+
+        p {
+            color: #9ca3af;
+            line-height: 1.7;
+        }
+
+        .question {
+            margin: 24px 0;
+            padding: 20px;
+            border-left: 4px solid #22c55e;
+            background: #020617;
+            border-radius: 12px;
+            color: #f9fafb;
+            font-size: 20px;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            background: #020617;
+            color: #e5e7eb;
+            font-family: inherit;
+            font-size: 16px;
+        }
+
+        button, .button {
+            display: inline-block;
+            margin-top: 16px;
+            padding: 13px 18px;
+            border: 0;
+            border-radius: 12px;
+            background: #22c55e;
+            color: #052e16;
+            font-weight: bold;
+            font-family: inherit;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .result {
+            margin-top: 22px;
+            padding: 18px;
+            border-radius: 12px;
+            background: #020617;
+            border: 1px solid #1f2937;
+            line-height: 1.7;
+        }
+
+        .success {
+            color: #22c55e;
+        }
+
+        .error {
+            color: #ef4444;
+        }
+
+        code {
+            color: #22c55e;
+            font-weight: bold;
+        }
+    </style>
 </head>
+
 <body>
 <main>
     <section class="card">
-        <span class="badge">Level 2 / Vigenère Cipher</span>
-        <h1>Vigenère Cipher Quiz</h1>
-        <p>Solve this quiz to reveal the clue for this level.</p>
+        <span class="badge">Level 2 / Vigenere Cipher</span>
 
-        <div class="question">What is the main device that processes data in a computer?</div>
+        <h1>Vigenere Cipher Quiz</h1>
+
+        <p>
+            Solve this quiz to get the Vigenere key.
+            Then use <code>vigenere_tool.py</code> to decrypt the encrypted Level 2 message.
+        </p>
+
+        <div class="question">
+            What is the main device that processes data in a computer?
+        </div>
 
         <input id="answer" type="text" placeholder="Type your answer here">
+
         <button onclick="checkAnswer()">Submit Answer</button>
 
         <div id="result" class="result">Awaiting input...</div>
@@ -25,7 +132,7 @@
 </main>
 
 <script>
-    const correctAnswers = ['CPU','CENTRAL PROCESSING UNIT'];
+    const correctAnswers = ["CPU", "CENTRAL PROCESSING UNIT"];
 
     function normalize(value) {
         return value.trim().toUpperCase();
@@ -36,9 +143,19 @@
         const result = document.getElementById("result");
 
         if (correctAnswers.includes(userAnswer)) {
-            result.innerHTML = `<div class="success"><b>ACCESS GRANTED</b><br>Correct. The Vigenère key is: <code>CPU</code></div>`;
+            result.innerHTML =
+                `<div class="success">
+                    <b>ACCESS GRANTED</b><br>
+                    Correct. Vigenere key: <code>CPU</code><br><br>
+                    Use this key with <code>vigenere_tool.py</code> to decrypt the Level 2 encrypted message.<br>
+                    The decrypted message will reveal the password for Level 3: <code>DRAGON</code>.
+                </div>`;
         } else {
-            result.innerHTML = `<div class="error"><b>ACCESS DENIED</b><br>Wrong answer. Try again.</div>`;
+            result.innerHTML =
+                `<div class="error">
+                    <b>ACCESS DENIED</b><br>
+                    Wrong answer. Try again.
+                </div>`;
         }
     }
 
