@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Level 4 - AES Challenge Quiz</title>
+    <title>Level 4 - AES Challenge</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,9 +11,15 @@
     <section class="card">
         <span class="badge">Level 4 / AES Encryption</span>
         <h1>AES Challenge Quiz</h1>
-        <p>Solve this quiz to reveal the clue for this level.</p>
 
-        <div class="question">Complete the clue: The movie where humans are trapped inside a simulation is called The ____.</div>
+        <p>
+            In Level 3, you decrypted the DES file and discovered the AES password/key.
+            Enter that key below to continue.
+        </p>
+
+        <div class="question">
+            What password/key was revealed after decrypting the DES file in Level 3?
+        </div>
 
         <input id="answer" type="text" placeholder="Type your answer here">
         <button onclick="checkAnswer()">Submit Answer</button>
@@ -25,7 +31,7 @@
 </main>
 
 <script>
-    const correctAnswers = ['MATRIX','THE MATRIX'];
+    const correctAnswers = ["MATRIX"];
 
     function normalize(value) {
         return value.trim().toUpperCase();
@@ -36,9 +42,19 @@
         const result = document.getElementById("result");
 
         if (correctAnswers.includes(userAnswer)) {
-            result.innerHTML = `<div class="success"><b>ACCESS GRANTED</b><br>Correct. The AES password/key is: <code>MATRIX</code></div>`;
+            result.innerHTML =
+                `<div class="success">
+                    <b>ACCESS GRANTED</b><br>
+                    Correct. The AES password/key is: <code>MATRIX</code><br><br>
+                    Now use OpenSSL to decrypt <code>secret.aes</code>.<br>
+                    The decrypted file will reveal the password for Level 5: <code>GALAXY</code>.
+                </div>`;
         } else {
-            result.innerHTML = `<div class="error"><b>ACCESS DENIED</b><br>Wrong answer. Try again.</div>`;
+            result.innerHTML =
+                `<div class="error">
+                    <b>ACCESS DENIED</b><br>
+                    Wrong answer. Try again.
+                </div>`;
         }
     }
 
